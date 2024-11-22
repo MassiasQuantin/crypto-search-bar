@@ -32,29 +32,3 @@ Une application web intuitive construite avec **React** pour rechercher des cryp
 
 - **CoinGecko API** : Fournit les données en temps réel sur les cryptomonnaies.
 
----
-
-## 📂 Structure du projet
-crypto-search-bar/
-├── public/               # Fichiers statiques
-│   └── index.html        # Point d’entrée HTML
-├── src/                  # Code source principal
-│   ├── components/       # Composants réutilisables
-│   │   ├── SearchBar.jsx
-│   │   ├── CryptoDetails.jsx
-│   │   └── Chart.jsx
-│   ├── styles/           # Fichiers SCSS
-│   │   ├── main.scss
-│   │   ├── components/
-│   │   │   ├── searchBar.scss
-│   │   │   ├── cryptoDetails.scss
-│   │   │   └── chart.scss
-│   │   └── _variables.scss
-│   ├── api/              # Fichiers pour les appels API
-│   │   └── coinGecko.js
-│   ├── App.js            # Composant principal
-│   ├── App.scss          # Styles globaux
-│   └── index.js          # Point d’entrée JS
-├── .gitignore            # Fichiers et dossiers ignorés par Git
-├── package.json          # Dépendances et scripts du projet
-└── README.md             # Documentation
