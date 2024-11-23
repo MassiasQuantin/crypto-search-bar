@@ -1,12 +1,18 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchBar from "./components/SearchBar";
-import "./App.scss";
+import CryptoDetails from "./components/CryptoDetails";
 
 const App = () => {
   return (
-    <div className="App">
-      <SearchBar />
-    </div>
+    <Router>
+      <Routes>
+        {/* Route principale */}
+        <Route path="/" element={<SearchBar />} />
+        {/* Route pour afficher les détails d'une crypto */}
+        <Route path="/details/:cryptoId" element={<CryptoDetails />} />
+      </Routes>
+    </Router>
   );
 };
 
