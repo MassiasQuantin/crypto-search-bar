@@ -1,54 +1,69 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Gestion des redirections
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { searchCrypto } from "../api/coinGecko";
-import "../styles/components/searchBar.scss";
+import { useTheme } from "../context/ThemeContext";
 
 const SearchBar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
-  const handleSearch = async (e) => {
-    const input = e.target.value;
-    setQuery(input);
-
-    if (input.length > 2) {
-      const data = await searchCrypto(input);
-      setResults(data);
+  useEffect(() => {
+    if (query.length > 2) {
+      const fetchResults = async () => {
+        const data = await searchCrypto(query);
+        setResults(data);
+      };
+      fetchResults();
     } else {
       setResults([]);
     }
+  }, [query]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (results.length > 0) {
+      navigate(`/details/${results[0].id}`);
+    }
   };
 
-  const handleCryptoClick = (cryptoId) => {
-    navigate(`/details/${cryptoId}`);
+  const handleResultClick = (id) => {
+    navigate(`/details/${id}`);
   };
 
   return (
     <div className="search-container">
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Rechercher une cryptomonnaie..."
-        value={query}
-        onChange={handleSearch}
-      />
-      <ul className="results-list">
-        {query.length > 2 && results.length === 0 ? (
-          <li className="result-item">Aucune cryptomonnaie trouvée</li>
-        ) : (
-          results.map((crypto) => (
+      <header>
+        <button onClick={toggleTheme}>
+          {theme === "light" ? "Mode Sombre" : "Mode Clair"}
+        </button>
+      </header>
+      <h1>Rechercher une cryptomonnaie</h1>
+      <form onSubmit={handleSearch}>
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Entrez le nom de la crypto..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit">Rechercher</button>
+      </form>
+      {results.length > 0 && (
+        <ul className="results-list">
+          {results.map((crypto) => (
             <li
               key={crypto.id}
               className="result-item"
-              onClick={() => handleCryptoClick(crypto.id)}
+              onClick={() => handleResultClick(crypto.id)}
             >
               <img src={crypto.thumb} alt={crypto.name} />
-              <span>{crypto.name}</span>
+              <span>{crypto.name} ({crypto.symbol.toUpperCase()})</span>
             </li>
-          ))
-        )}
-      </ul>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

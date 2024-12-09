@@ -1,24 +1,69 @@
 @import "./variables";
-
 @import "./components/searchBar";
 @import "./components/cryptoDetails";
 @import "./components/chart";
 
-// Variables globales
-$primary-color: #3b82f6;
-$background-color: #f9fafb;
+:root {
+  --primary-color: #3b82f6;
+  --primary-color-hover: #2563eb;
+  --background-color: #ffffff;
+  --text-color: #333;
+  --border-color: #ccc;
+  --hover-color: #f9fafb;
+  --placeholder-color: #999;
+}
 
-// Styles globaux
+[data-theme="dark"] {
+  --primary-color: #1e90ff;
+  --primary-color-hover: #1c7ed6;
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --border-color: #333;
+  --hover-color: #1e1e1e;
+  --placeholder-color: #666;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: $background-color;
-  color: #333;
+  background: url('../assets/25101.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  [data-theme="dark"] & {
+    background: url('../assets/25101_invert.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
 }
 
-.App {
+.global-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.theme-toggle, .home-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-color-hover);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }

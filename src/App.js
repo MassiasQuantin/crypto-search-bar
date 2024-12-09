@@ -6,12 +6,20 @@ import CryptoDetails from "./components/CryptoDetails";
 const App = () => {
   return (
     <Router>
-      <Routes>
-        {/* Route principale */}
-        <Route path="/" element={<SearchBar />} />
-        {/* Route pour afficher les détails d'une crypto */}
-        <Route path="/details/:cryptoId" element={<CryptoDetails />} />
-      </Routes>
+      <div
+        style={{
+          backgroundImage: "url('/25101.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<SearchBar />} />
+          <Route path="/details/:cryptoId" element={<CryptoDetails />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
