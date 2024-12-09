@@ -26,34 +26,33 @@
   .results-list {
     margin-top: 20px;
     width: 600px;
-    max-height: 300px; /* Limite la hauteur */
-    overflow-y: auto; /* Permet un défilement vertical si nécessaire */
+    max-height: 300px;
+    overflow-y: hidden;
     list-style: none;
     padding: 0;
-    background-color: #fff; /* Ajoute un fond pour rendre visible la liste */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
   
-    .result-item {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-      border-bottom: 1px solid #f0f0f0; /* Séparation entre les éléments */
-      cursor: pointer;
+  .result-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
   
-      img {
-        width: 30px;
-        height: 30px;
-        margin-right: 15px;
-      }
+    img {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+    }
   
-      &:hover {
-        background: #f9fafb;
-      }
+    &:hover {
+      background: #f9fafb;
+    }
   
-      &:last-child {
-        border-bottom: none; /* Supprime la bordure du dernier élément */
-      }
+    &:last-child {
+      border-bottom: none;
     }
   }

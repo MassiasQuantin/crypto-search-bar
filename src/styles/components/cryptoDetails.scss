@@ -1,0 +1,58 @@
+@import "../_variables";
+
+.crypto-details {
+  background-color: $background-color;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    color: $primary-color;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .period-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+
+    button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+
+      &:active {
+        background-color: darken($primary-color, 15%);
+      }
+    }
+  }
+
+  .crypto-chart {
+    margin-top: 20px;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: $primary-color;
+    }
+  }
+}
